@@ -1,5 +1,5 @@
 let url = 'https://api.myjson.com/bins/wezgm'; //actualiza tu URL
-console.log("sync");
+
 
  async function getData(){
     let json = await fetch(url);

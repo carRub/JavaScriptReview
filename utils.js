@@ -1,11 +1,12 @@
 const getKey = (obj, val) => Object.keys(obj).find(key => obj[key] === val); //retrieve object key by value
 
 //reiniciar partida, limpiar todo, iniciar todo
-console.log("utils.js");
+
 
 let reiniciar = ()=>{
     
-    gameStatus = STATUS_ID.colocar; 
+    // gameStatus = STATUS_ID.colocar; 
+    gameStatus = STATUS_ID.miTurno;
     //matrices de 11 por 11 los indices 0 no se van a usar
     ownerMatrix = Array(11).fill().map(() => Array(11).fill(0));
     attackMatrix = Array(11).fill().map(() => Array(11).fill(0));
@@ -85,7 +86,7 @@ function updateDireccion(dir){
 }
 
 async function updateStatus(status){
-    //console.log("actualizar status a", status);
+    console.log("actualizar status a", status);
 
     //TODO TAREA: actualizar estatus // DONE
     //gameStatus = status;
