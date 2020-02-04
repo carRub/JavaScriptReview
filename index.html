@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Battleship</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        td {
+            width: 30px;
+            height: 30px;
+        }
+
+        table td.active {
+            background-color: gray;
+        }
+
+        table td.selected {
+            background-color: lightblue;
+        }
+
+        #tablaOwner td.fire {
+            background-color: black;
+        }
+
+        #tablaOwner td.failed {
+            background-color: yellow;
+        }
+
+        #tablaAttack td.fire {
+            background-color: green;
+        }
+
+        #tablaAttack td.failed {
+            background-color: darkgray;
+        }
+    
+        table td.invalid {
+            background-color: red;
+        }
+        .display-4 {
+            font-size: 2em;
+        }
+
+        .display-4 span {
+            font-size: .5em;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="row">
+            <h1>Batalla naval</h1> 
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+              
+                <select class="custom-select" name="jugador" id="jugador">
+                    <option selected value="1">Jugador 1</option>
+                    <option value="2">Jugador 2</option>
+                </select>
+            </div>
+            <a id="select" class="btn btn-primary ml-3 h-75 " href="#" role="button">Seleccionar</a>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-4">
+                <h2>Mis barcos </h2>
+                <table class="table-bordered" id="tablaOwner">
+                    <tr>
+                        <td scope="row">
+                            <span></span></td>
+                        <td><span>A</span></td>
+                        <td><span>B</span></td>
+                        <td><span>C</span></td>
+                        <td><span>D</span></td>
+                        <td><span>E</span></td>
+                        <td><span>F</span></td>
+                        <td><span>G</span></td>
+                        <td><span>H</span></td>
+                        <td><span>I</span></td>
+                        <td><span>J</span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>1</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>2</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>3</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>4</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>5</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>6</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>7</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>8</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>9</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>10</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-4">
+                <h2>Mis ataques </h2>
+                <table class="table-bordered" id="tablaAttack">
+                    <tr>
+                        <td scope="row">
+                            <span></span></td>
+                        <td><span>A</span></td>
+                        <td><span>B</span></td>
+                        <td><span>C</span></td>
+                        <td><span>D</span></td>
+                        <td><span>E</span></td>
+                        <td><span>F</span></td>
+                        <td><span>G</span></td>
+                        <td><span>H</span></td>
+                        <td><span>I</span></td>
+                        <td><span>J</span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>1</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>2</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>3</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>4</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>5</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>6</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>7</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>8</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>9</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <span>10</span>
+                        </td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                        <td><span> </span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="display-4">
+                Estado del juego: <span id="status">colocar</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="display-4">
+                Dirección: <span id="dir">derecha</span>
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="display-4">
+                Barcos:
+           </div> 
+        </div>
+
+        <div class="row mt-3">
+            <ul class="list-group mt-3">
+                <li id="c2" class="list-group-item"> <span class="size"> 2 </span > cuadros: <span class="count ml-2">0</span> </li>
+                <li id="c3" class="list-group-item"> <span class="size"> 3 </span > cuadros: <span class="count ml-2">0</span> </li>
+                <li id="c4" class="list-group-item"> <span class="size"> 4 </span > cuadros: <span class="count ml-2">0</span> </li>
+            </ul>
+        </div>
+        
+        <div class="row mt-3">
+            <a id="btnReiniciar" class="btn btn-primary" href="#" role="button">reiniciar juego</a>
+        </div>
+
+
+
+
+    </div>
+  
+    <script src="definitions.js"></script>
+    <script src="utils.js"></script>
+    <script src="sync.js"></script>
+    <script src="game.js"></script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </scripts>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
