@@ -1,7 +1,7 @@
 //PARA LA TAREA NO REQUIERE CAMBIOS
 //pero si te ayuda añadir o quitar algo puedes hacerlo
 
-console.log("definitios.js");
+
 
 let barcos = {
     count: [0,0,0], //cantidad de barcos por tipo 

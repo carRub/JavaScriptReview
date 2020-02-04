@@ -96,13 +96,16 @@ tOwner.onmouseover = tOwner.onmouseout = tOwner.onclick = (event) => {
             document.getElementById('tablaOwner').rows[row].cells[col].classList.remove("invalid");
     }
     
-
-    if(numShip > (SIZES.length - 1)){
+    console.log("numShip: ", numShip, "sizes.kength: ", SIZES.length);
+    if(numShip == (SIZES.length)){
         gameStatus = STATUS_ID.esperarInicio;
+        updateStatus(gameStatus);
+        console.log("status updated");
         return;
     }
 
     if(COUNT[numShip] == 0) numShip ++;
+    updateCantidadBarcos(COUNT.slice());
 
     // en caso de que la celda sea inválida ponerle la clase invalid (mouseover) y no permite seleccionarla //DONE
 
@@ -117,9 +120,9 @@ tOwner.onmouseover = tOwner.onmouseout = tOwner.onclick = (event) => {
 //considerar tipo de barco y direccion
 function isValid(fila, columna, curDirection, shipSize) {
     //si la matriz owner ya tiene algo diferente de 0 regresar false.  // DONE
-    if(ownerMatrix[fila][columna] != 0) return false;
     //Si el susario esta sobre la definicion de las filas o columnas, regresar false. //DONE
-    if(fila == 0 || columna == 0) return false;
+    if(ownerMatrix[fila][columna] != 0 || fila == 0 || columna == 0) return false;
+    
     
     //revisar que el barco del tamaño indicado no choca con otro ya puesto // DONE
     //considerar la duración y el tamaño del barco // DONE
@@ -142,14 +145,31 @@ function isValid(fila, columna, curDirection, shipSize) {
 //***************************/
 
 tAttack.onmouseover = tAttack.onmouseout = tAttack.onclick = (event)=>{
-    //entrar aquí cuando sea mi turno, si no salir
+    //entrar aquí cuando sea mi turno, si no salir //DONE
+    if(gameStatus != STATUS_ID.miTurno) return;
     
-    //asegurarse que sea celda(TD) y obtner rowIndex y cellIndex,
+    //asegurarse que sea celda(TD) y obtner rowIndex y cellIndex, // DONE, need to validate
+    if(event.target.tagName != 'TD') return;
+    let row = event.target.closest("tr").rowIndex;
+    let col = event.target.cellIndex;
     
-    //validar que la celda no haya sido previamente seleccionada
-    //puedes usar attackMatrix  si tiene valor 1 significa que la celda fue usada    
+    //validar que la celda no haya sido previamente seleccionada //DONE
+    //puedes usar attackMatrix  si tiene valor 1 significa que la celda fue usada // DONE
+    //Si el susario esta sobre la definicion de las filas o columnas, salir //DONE
+    if(row == 0 || col == 0 || attackMatrix[row][col] != 0) return;
+    console.log("valid");
 
-    //en caso de click  seleccionar la celda  y poner un 1 en la matriz.
+    //Manejando los eventos // DONE
+    if(event.type == 'mouseover'){
+        document.getElementById('tablaAttack').rows[row].cells[col].setAttribute("class", "active");
+    } else if(event.type == 'mouseout'){
+        document.getElementById('tablaAttack').rows[row].cells[col].classList.remove("active");
+    }else { //click  //en caso de click  seleccionar la celda  y poner un 1 en la matriz. /// DONE
+        document.getElementById('tablaAttack').rows[row ].cells[col].setAttribute("class", "selected");
+        attackMatrix[row][col] = 1;
+    }
+
+    
     //enviar el ataque.  
 
     //en caso de que no sea válido poner a la celda la clase invalid 
