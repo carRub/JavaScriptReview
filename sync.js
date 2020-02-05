@@ -48,11 +48,13 @@ let test1 = {
 async function updatePlayer(datosJugador, numJugador){
     console.log("updatePlayer", datosJugador, numJugador);
     //obtener los datos y actualizar al jugador correspondiente volvera a guardar
+
 }
 
 async function esperarMiTurno(numJugador){
     //entrar aquí solo si el estado es esperarInicio o esperarTurno
     //si no salir
+    if(gameStatus != STATUS_ID.esperarInicio && gameStatus != STATUS_ID.esperarTurno) return;
 
     //obtener datos guardar en variables jugador y enemigo 
 

@@ -110,7 +110,7 @@ tOwner.onmouseover = tOwner.onmouseout = tOwner.onclick = (event) => {
     // en caso de que la celda sea inválida ponerle la clase invalid (mouseover) y no permite seleccionarla //DONE
 
     //al seleccionar disminuir la cantidad de barcos de la posición actual (numShip) // DONE
-    //si se colocaron todos los barcos arrancar el proceso de esperar turno y cambiar el estatus a esperarInicio
+    //si se colocaron todos los barcos arrancar el proceso de esperar turno y cambiar el estatus a esperarInicio //DONE
 
  
 
@@ -148,7 +148,7 @@ tAttack.onmouseover = tAttack.onmouseout = tAttack.onclick = (event)=>{
     //entrar aquí cuando sea mi turno, si no salir //DONE
     if(gameStatus != STATUS_ID.miTurno) return;
     
-    //asegurarse que sea celda(TD) y obtner rowIndex y cellIndex, // DONE, need to validate
+    //asegurarse que sea celda(TD) y obtner rowIndex y cellIndex, // DONE
     if(event.target.tagName != 'TD') return;
     let row = event.target.closest("tr").rowIndex;
     let col = event.target.cellIndex;
@@ -169,9 +169,9 @@ tAttack.onmouseover = tAttack.onmouseout = tAttack.onclick = (event)=>{
         attackMatrix[row][col] = 1;
     }
 
-    
-    //enviar el ataque.  
-
+    //enviar el ataque. 
+    let ataque = [row, col]; 
+    atacar(ataque, numJugador);
     //en caso de que no sea válido poner a la celda la clase invalid 
     
 
