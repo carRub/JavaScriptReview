@@ -100,6 +100,7 @@ tOwner.onmouseover = tOwner.onmouseout = tOwner.onclick = (event) => {
     if(numShip == (SIZES.length)){
         gameStatus = STATUS_ID.esperarInicio;
         updateStatus(gameStatus);
+        esperarMiTurno(numJugador);
         console.log("status updated");
         return;
     }
@@ -167,11 +168,12 @@ tAttack.onmouseover = tAttack.onmouseout = tAttack.onclick = (event)=>{
     }else { //click  //en caso de click  seleccionar la celda  y poner un 1 en la matriz. /// DONE
         document.getElementById('tablaAttack').rows[row ].cells[col].setAttribute("class", "selected");
         attackMatrix[row][col] = 1;
+        let ataque = [row, col]; 
+        atacar(ataque, numJugador);
     }
 
     //enviar el ataque. 
-    let ataque = [row, col]; 
-    atacar(ataque, numJugador);
+
     //en caso de que no sea válido poner a la celda la clase invalid 
     
 

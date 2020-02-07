@@ -5,8 +5,8 @@ const getKey = (obj, val) => Object.keys(obj).find(key => obj[key] === val); //r
 
 let reiniciar = ()=>{
     
-    // gameStatus = STATUS_ID.colocar; 
-    gameStatus = STATUS_ID.miTurno;
+    gameStatus = STATUS_ID.colocar; 
+    // gameStatus = STATUS_ID.miTurno;
     //matrices de 11 por 11 los indices 0 no se van a usar
     ownerMatrix = Array(11).fill().map(() => Array(11).fill(0));
     attackMatrix = Array(11).fill().map(() => Array(11).fill(0));
